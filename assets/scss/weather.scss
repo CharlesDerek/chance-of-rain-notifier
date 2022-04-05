@@ -60,14 +60,15 @@ body {
   &__title {
     font-size: 2rem;
     color: #fff;
-    opacity: 0.9;
-    font-family: 'Lobster', cursive;
+    opacity: 0.7;
+    font-family: 'Send Flowers', cursive;
   }
 
   &__logo {
-    width: 2.5rem;
-    height: 2.5rem;
-    opacity: 0.9;
+    width: 3rem;
+    height: 4rem;
+    padding-bottom: 0.3rem;
+    opacity: 0.85;
   }
 }
 
