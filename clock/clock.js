@@ -30,24 +30,18 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
 })();
 
 function compareTime() {
-    //
-    // var currentTimeStamp = JSON.parse(currentTime);
     if (currentTime > requestedTime) {
-        // document.getElementById("clock-form__output").innerHTML = "It's later!";
-        console.log();
         var difference = currentTime - requestedTime;
         var hours = Math.floor(difference / 3600000);
         var minutes = Math.floor((difference - (hours * 3600000)) / 60000);
         var seconds = Math.floor((difference - (hours * 3600000) - (minutes * 60000)) / 1000);
         console.log("It's later by: " + hours + ":" + minutes + ":" + seconds);
-
     } else if (currentTime < requestedTime) {
-        // document.getElementById("clock-form__output").innerHTML = "It's earlier!";
         console.log();
         var difference = requestedTime - currentTime;
-        document.getElementById("clock-form__output").innerHTML = "It's earlier!";
+        console.log("It's earlier!");
     } else {
-        document.getElementById("clock-form__output").innerHTML = "It's the same time!";
+        console.log("It's the same time!");
     }
 }
 
