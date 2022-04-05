@@ -1,22 +1,19 @@
 
 // create a callback 
 let currentTime;
-let requestTime;
+let requestedTime;
 
 // form submit event listener:
 document.getElementById("clock-form__inputs").addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("submit");
     console.log(e);
-    requestTime = JSON.stringify(e.timeStamp);
+    requestedTime = JSON.stringify(e.timeStamp);
     compareTime();
 });
 
-
-
 // create page active timestamp
 (function clock() {
-    // 
     var d = new Date();
     currentTime = JSON.stringify(d);
     var hours = d.getHours();
@@ -32,19 +29,22 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     setTimeout(clock, 1000);
 })();
 
-
-// create a function that gets the value of currentTime and comapres it to the value of the input field with id time:
-// if the current time is greater than the input field value, print "It's later!" to the page.
-// if the current time is less than the input field value, print "It's earlier!" to the page.
-// if the current time is equal to the input field value, print "It's the same time!" to the page:
 function compareTime() {
-    // 
-    var time = document.getElementById("time").value;
-    var timeStamp = JSON.parse(time);
-    var currentTimeStamp = JSON.parse(currentTime);
-    if (currentTimeStamp > timeStamp) {
-        document.getElementById("clock-form__output").innerHTML = "It's later!";
-    } else if (currentTimeStamp < timeStamp) {
+    //
+    // var currentTimeStamp = JSON.parse(currentTime);
+    if (currentTime > requestedTime) {
+        // document.getElementById("clock-form__output").innerHTML = "It's later!";
+        console.log();
+        var difference = currentTime - requestedTime;
+        var hours = Math.floor(difference / 3600000);
+        var minutes = Math.floor((difference - (hours * 3600000)) / 60000);
+        var seconds = Math.floor((difference - (hours * 3600000) - (minutes * 60000)) / 1000);
+        console.log("It's later by: " + hours + ":" + minutes + ":" + seconds);
+
+    } else if (currentTime < requestedTime) {
+        // document.getElementById("clock-form__output").innerHTML = "It's earlier!";
+        console.log();
+        var difference = requestedTime - currentTime;
         document.getElementById("clock-form__output").innerHTML = "It's earlier!";
     } else {
         document.getElementById("clock-form__output").innerHTML = "It's the same time!";
