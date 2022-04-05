@@ -5,6 +5,7 @@ let requestedTime;
 let hourInterval;
 let minuteInterval;
 let chanceOfRainChange;
+let weatherData;
 
 // form submit event listener:
 document.getElementById("clock-form__inputs").addEventListener("submit", function (e) {
@@ -15,7 +16,7 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     // get the values of the form inputs:
     minuteInterval = document.getElementById("minuteInputRangeId").value;
     hourInterval = document.getElementById("hourInputRangeId").value;
-    chanceOfRainChange = document.getElementById("chanceOfRainOutputRange").value;
+    chanceOfRainChange = document.getElementById("chanceOfRainRangeId").value;
     compareTime();
 });
 
@@ -33,25 +34,57 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     seconds = seconds < 10 ? '0' + seconds : seconds;
     var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
     document.getElementById("clock").innerHTML = strTime;
+    // This is where HH MM SS of current time would be assigned to the clock
     setTimeout(clock, 1000);
 })();
 
+// callback function for calling api on proper interval:
+// function intervalCall(hours, minutes, callback) {
+//     var date = new Date();
+//     var targetTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes, 0);
+  
+//     if (targetTime - date <= 0) {
+//       targetTime.setDate(targetTime.getDate() + 1);
+//     }
+// }
+
+// making a REST API call to the weather API:
+const userAction = async () => {
+    const response = await fetch(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=8d5a25e33b672d7e9210bbf697c33ba9);
+    const myJson = await response.json(); //extract JSON from the http response
+// do something with myJson
+}
+
 function compareTime() {
-    if (currentTime > requestedTime) {
-        var difference = currentTime - requestedTime;
-        var hours = Math.floor(difference / 3600000);
-        var minutes = Math.floor((difference - (hours * 3600000)) / 60000);
-        var seconds = Math.floor((difference - (hours * 3600000) - (minutes * 60000)) / 1000);
-        console.log("It's later by: " + hours + ":" + minutes + ":" + seconds);
-    } else if (currentTime < requestedTime) {
-        // refer to the following date:
-        console.log();
-        var difference = requestedTime - currentTime;
-        console.log("It's earlier!");
+    if (currentTime < requestedTime) {
+        let milliseconds;
+        // create a callback that runs at the interval of the minuteInterval value in minutes
+        // and hourInterval value in hours:
+        // convert hourInterval into milliseconds (only if hourInterval is greater than 0):
+        if (hourInterval > 0) {
+            milliseconds += hourInterval * 60 * 60 * 1000;
+        }
+        // convert minuteInterval into milliseconds (only if minuteInterval is greater than 0):
+        if (minuteInterval > 0) {
+            milliseconds += minuteInterval * 60 * 1000;
+        }
+        setTimeout(function () {
+            console.log("api call");
+            const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=38.8951&lon=-77.0364&appid=8d5a25e33b672d7e9210bbf697c33ba9");
+            const fetchedJson = await response.json();
+            weatherData = fetchedJson;
+            // run conditional logic to determine if breaking out of logic if conditions are met:
+            
+
+            compareTime();
+        }, milliseconds);
     } else {
-        console.log("It's the same time!");
+        console.log("Break out of loop and exit");
     }
 }
+
+
+
 
 // function compareTime() {
 //     var d = new Date();
