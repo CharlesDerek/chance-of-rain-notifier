@@ -18,8 +18,8 @@ function geocode(address) {
       document
         .getElementById("map")
         .setAttribute(
-          "src",
-          `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s`
+          "style",
+          `background-image: url(https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s)`
         );
     })
     .catch(function (error) {
