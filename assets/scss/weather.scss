@@ -17,20 +17,13 @@ h6 {
 }
 
 body {
-<<<<<<< HEAD
   background-image: url("../img/pexels-min-an-1403550.jpg");
-=======
-  background-image: url('../img/pexels-min-an-1403550.jpg');
   background-color: rgba($color: #7e9bb1, $alpha: 0.8);
->>>>>>> andres
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-<<<<<<< HEAD
-=======
   position: relative;
->>>>>>> andres
 }
 .video-container {
   position: absolute;
@@ -54,34 +47,6 @@ body {
 // Header Section
 
 .header {
-<<<<<<< HEAD
-  background-color: rgba($color: #fff, $alpha: 0.2);
-
-  &__container {
-    display: flex;
-    padding: 1rem;
-    justify-content: center;
-    align-items: flex-end;
-    box-shadow: 0 0.5rem 1rem rgba($color: #000, $alpha: 0.2);
-  }
-
-  &__title {
-    font-size: 2rem;
-    color: #fff;
-    opacity: 70%;
-    font-family: "Lobster", cursive;
-  }
-
-  &__logo {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-.map__container {
-  display: flex;
-  padding: 5rem 3rem 0.25rem;
-=======
   background-color: rgba($color: rgb(197, 195, 195), $alpha: 0.2);
 
   &__container {
@@ -96,7 +61,7 @@ body {
     font-size: 2rem;
     color: #fff;
     opacity: 0.9;
-    font-family: 'Lobster', cursive;
+    font-family: "Lobster", cursive;
   }
 
   &__logo {
@@ -111,8 +76,9 @@ body {
 .map__container {
   display: flex;
   padding: 2rem 3rem 0.25rem;
->>>>>>> andres
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #pac-input {
@@ -128,15 +94,11 @@ body {
 }
 
 #map {
-<<<<<<< HEAD
-  margin: auto;
-  height: 20rem;
-  width: 25rem;
-=======
   margin: 1rem auto;
   height: 25rem;
   border-radius: 1.5rem;
   width: 90%;
+  object-fit: none;
 
   @media (min-width: 48rem) {
     width: 75%;
@@ -185,7 +147,7 @@ body {
     font-size: 1rem;
     text-align: center;
     color: rgba($color: #fff, $alpha: 1);
-    font-family: 'Poppins', cursive;
+    font-family: "Poppins", cursive;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1.5rem;
     padding: 0.25rem 0.5rem;
@@ -195,7 +157,7 @@ body {
   &__percentage {
     font-size: 3rem;
     color: rgba($color: #fff, $alpha: 1);
-    font-family: 'Poppins', cursive;
+    font-family: "Poppins", cursive;
   }
 }
 
@@ -203,7 +165,8 @@ body {
 
 .clock {
   &-container {
-    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15),
+      0 15px 90px 30px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -255,5 +218,4 @@ body {
   &-title__name {
     font-size: 1rem;
   }
->>>>>>> andres
 }

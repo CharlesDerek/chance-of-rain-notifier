@@ -73,6 +73,8 @@ body {
   display: flex;
   padding: 2rem 3rem 0.25rem;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #pac-input {
@@ -95,6 +97,8 @@ body {
   height: 25rem;
   border-radius: 1.5rem;
   width: 90%;
+  -o-object-fit: none;
+     object-fit: none;
 }
 @media (min-width: 48rem) {
   #map {
