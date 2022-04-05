@@ -48,23 +48,98 @@
       <!-- Google Map Container -->
       <div class="map__container">
         <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
-    </div>
-    <div id="map"></div>    <!-- End of Google Map Container -->
+      </div>
+      <div id="map"></div>
+      <!-- End of Google Map Container -->
 
-
-      <!-- Weather Container -->
-      <div class="weather-container">
-        <div class="weather-container__clock">
-          <div class="weather-container__clock__time">
-            <span id="time"></span>
-          </div>
-          <div class="weather-container__clock__date">
-            <span id="date"></span>
+      <!-- Info Container -->
+      <div class="info__container">
+        <!-- Percipitation Container -->
+        <div class="percipation">
+          <h2 class="percipation__title">Chance of Rain</h2>
+          <div class="percipation__percentage">
+            <span id="percipation__percentage">77%</span>
           </div>
         </div>
+        <!-- End of Percipitation Container -->
+
+        <!-- Clock container -->
+        <div class="clock-container">
+          <div class="clock-col">
+            <p class="clock-hours clock-timer"></p>
+            <p class="clock-label">Hours</p>
+          </div>
+          <div class="clock-col">
+            <p class="clock-minutes clock-timer"></p>
+            <p class="clock-label">Minutes</p>
+          </div>
+          <div class="clock-col">
+            <p class="clock-seconds clock-timer"></p>
+            <p class="clock-label">Seconds</p>
+          </div>
+        </div>
+        <!-- End of Clock container -->
+
+        <!-- Sliders -->
+
+        <div class="slider">
+          <div class="slider-column">
+            <div class="slider-title">
+              <h2 class="slider-title__name">Hours</h2>
+            </div>
+            <div class="slider-hour">
+              <div class="slider-hour__container">
+                <div class="slider-hour__value">
+                  <span id="slider-hour__value">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="slider-hour__slider">
+              <input type="range" min="0" max="100" value="0" class="slider-hour__slider-input" id="slider-hour" />
+            </div>
+          </div>
+          <div class="slider-column">
+            <div class="slider-title">
+              <h2 class="slider-title__name">Minutes</h2>
+            </div>
+            <div class="slider-minutes">
+              <div class="slider-minutes__container">
+                <div class="slider-minutes__value">
+                  <span id="slider-minutes__value">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="slider-minutes__slider">
+              <input type="range" min="0" max="60" value="0" class="slider-minutes__slider-input" id="slider-minutes" />
+            </div>
+          </div>
+          <div class="slider-column">
+            <div class="slider-title">
+              <h2 class="slider-title__name">% Change</h2>
+            </div>
+            <div class="slider-difference">
+              <div class="slider-difference__container">
+                <div class="slider-difference__value">
+                  <span id="slider-difference__value">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="slider-difference__slider">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                class="slider-difference__slider-input"
+                id="slider-difference"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- End of Sliders -->
       </div>
 
-      <!-- -->
+      <!-- End of Info Container -->
     </main>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa6Sr8hUpf1UZT_AFN5hZWU_wlf3BNg2g&callback=initMap"
