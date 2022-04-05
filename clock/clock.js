@@ -1,11 +1,45 @@
-
-// create a callback 
+// global variables:
 let currentTime;
 let requestedTime;
 let hourInterval;
 let minuteInterval;
-let chanceOfRainChange;
+let userCOROriginalVal;
+let userCORChange;
+let fetchedCOR;
 let weatherData;
+let forcast;
+let latitude;
+let longitude;
+let statusVal = false;
+let i = 0;
+
+// create a function that calls the weather API and returns the response:
+const getWeather = async () => {
+    const response = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=38.8951&lon=-77.0364&appid=8d5a25e33b672d7e9210bbf697c33ba9");
+    let myJson = await response.json(); //extract JSON from the http response
+    console.log("fetching weather data...");
+    // myJson = "fetched weather data";
+    console.log(JSON.stringify(myJson, null, 2));
+    console.table(myJson);
+    weatherData = myJson;
+    fetchedCOR = weatherData.list[0].pop;
+
+    // set the userCOROriginalVal to the fetched COR value only the first time ran:
+    if (userCOROriginalVal === undefined && i === 0) {
+        userCOROriginalVal = fetchedCOR;
+    }
+    i++;
+
+    // check if the precipitation chance is greater than the userCOR
+    if (userCOROriginalVal + userCORChange > fetchedCOR) {
+        document.body.style.backgroundColor = "red";
+        console.log("Chance of rain changed more than user requested");
+        statusVal = true;
+    } else {
+        console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees");
+    }
+    return myJson;
+}
 
 // form submit event listener:
 document.getElementById("clock-form__inputs").addEventListener("submit", function (e) {
@@ -17,6 +51,8 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minuteInterval = document.getElementById("minuteInputRangeId").value;
     hourInterval = document.getElementById("hourInputRangeId").value;
     chanceOfRainChange = document.getElementById("chanceOfRainRangeId").value;
+    // call the weather API once when the form is submitted:
+    getWeather();
     compareTime();
 });
 
@@ -38,79 +74,21 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     setTimeout(clock, 1000);
 })();
 
-// callback function for calling api on proper interval:
-// function intervalCall(hours, minutes, callback) {
-//     var date = new Date();
-//     var targetTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes, 0);
-  
-//     if (targetTime - date <= 0) {
-//       targetTime.setDate(targetTime.getDate() + 1);
-//     }
-// }
-
-// making a REST API call to the weather API:
-const userAction = async () => {
-    const response = await fetch(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=8d5a25e33b672d7e9210bbf697c33ba9);
-    const myJson = await response.json(); //extract JSON from the http response
-// do something with myJson
-}
-
 function compareTime() {
     if (currentTime < requestedTime) {
-        let milliseconds;
-        // create a callback that runs at the interval of the minuteInterval value in minutes
-        // and hourInterval value in hours:
-        // convert hourInterval into milliseconds (only if hourInterval is greater than 0):
-        if (hourInterval > 0) {
-            milliseconds += hourInterval * 60 * 60 * 1000;
-        }
-        // convert minuteInterval into milliseconds (only if minuteInterval is greater than 0):
-        if (minuteInterval > 0) {
-            milliseconds += minuteInterval * 60 * 1000;
-        }
+        let milliseconds =  (hourInterval * 60 * 60 * 1000) + (minuteInterval * 60 * 1000);
+        console.log("milliseconds: " + milliseconds);
         setTimeout(function () {
-            console.log("api call");
-            const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=38.8951&lon=-77.0364&appid=8d5a25e33b672d7e9210bbf697c33ba9");
-            const fetchedJson = await response.json();
-            weatherData = fetchedJson;
-            // run conditional logic to determine if breaking out of logic if conditions are met:
-            
-
+            getWeather(); // calls the weather API and returns the response
+            if (statusVal === true) {
+                console.log("the weather has passed the requested amount in Chance of Rain, exiting the timeout function");
+                return;
+            }
             compareTime();
+            console.log("api call running again in " + milliseconds + " milliseconds");
         }, milliseconds);
     } else {
         console.log("Break out of loop and exit");
+        return;
     }
 }
-
-
-
-
-// function compareTime() {
-//     var d = new Date();
-//     if (currentTime > requestTime) {
-//         document.getElementById("countdown").innerHTML = "It's later!";
-//     } else if (currentTime < requestTime) {
-//         document.getElementById("countdown").innerHTML = "It's earlier by " + (requestTime - currentTime) + " seconds!";
-//         let d = (requestTime - currentTime);
-//         var hours = d.getHours();
-//         var minutes = d.getMinutes();
-//         var seconds = d.getSeconds();
-//         minutes = minutes < 10 ? '0' + minutes : minutes;
-//         seconds = seconds < 10 ? '0' + seconds : seconds;
-//         var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-//         document.getElementById("countdown").innerHTML = strTime;
-
-//         setTimeout(compareTime, 1000);
-//     } else {
-//         document.getElementById("countdown").innerHTML = "It's the same time!";
-//     }
-// }
-
-
-//Code for making a REST API call to the weather API:
-// //const userAction = async () => {
-//     const response = await fetch(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key});
-//     const myJson = await response.json(); //extract JSON from the http response
-//     // do something with myJson
-//   }
