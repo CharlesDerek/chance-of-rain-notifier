@@ -1,58 +1,64 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
 
 body {
-    background-image: url('../img/pexels-min-an-1403550.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+  background-image: url("../img/pexels-min-an-1403550.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .header {
-    background-color: rgba($color: #fff, $alpha: .2);
+  background-color: rgba($color: #fff, $alpha: 0.2);
 
-    &__container {
-        display: flex;
-        padding: 1rem;
-        justify-content: center;
-        align-items: flex-end;
-        box-shadow: 0 0.5rem 1rem rgba($color: #000, $alpha: .2);
-    }
+  &__container {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: flex-end;
+    box-shadow: 0 0.5rem 1rem rgba($color: #000, $alpha: 0.2);
+  }
 
-    &__title {
-        font-size: 2rem;
-        color: #fff;
-        opacity: 70%;
-        font-family: 'Lobster', cursive;
-    }
+  &__title {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 70%;
+    font-family: "Lobster", cursive;
+  }
 
-    &__logo {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
+  &__logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
-
 .map__container {
-    display: flex;
-    padding: 5rem 3rem .25rem;
-    justify-content: center;
+  display: flex;
+  padding: 5rem 3rem 0.25rem;
+  justify-content: center;
 }
 
 #pac-input {
 }
 
 #map {
-    margin: auto;
-    height: 20rem;
-    width: 25rem;
+  margin: auto;
+  height: 20rem;
+  width: 25rem;
 }
