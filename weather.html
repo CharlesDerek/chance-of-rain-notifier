@@ -12,23 +12,41 @@
 
     <!-- Google Fonts -->
     <link
-      <link
       href="https://fonts.googleapis.com/css2?family=Galada&family=Lobster&family=Montserrat&family=Poppins&display=swap"
       rel="stylesheet"
     />
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="assets/vendor/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/fontawesome/css/fontawesome.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/scss/weather.css" />
 
     <!-- Places polyfill -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="./index.js"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- link the google api places library  -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
+    <script src="./weather.js" defer></script>
     <title>The Weather Butler</title>
   </head>
 
@@ -37,7 +55,11 @@
       <div class="header">
         <div class="header__container">
           <a href="weather.html" class="header__logo">
-            <img class="header__logo" src="assets/img/ButlerLogo.png" alt="The Weather Butler" />
+            <img
+              class="header__logo"
+              src="assets/img/ButlerLogo.png"
+              alt="The Weather Butler"
+            />
           </a>
           <h1 class="header__title">The Weather Butler</h1>
         </div>
@@ -47,9 +69,17 @@
     <main>
       <!-- Google Map Container -->
       <div class="map__container">
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
-    </div>
-    <div id="map"></div>
+        <form id="address-form">
+          <input
+            id="pac-input"
+            placeholder="enter a place"
+            type="text"
+            name="addressInput"
+          />
+          <button type="submit">GO</button>
+        </form>
+      </div>
+      <div id="map"></div>
 
       <!-- End of Google Map Container -->
 
