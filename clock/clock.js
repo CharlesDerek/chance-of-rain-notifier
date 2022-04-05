@@ -19,8 +19,6 @@ const getWeather = async () => {
     let myJson = await response.json(); //extract JSON from the http response
     console.log("fetching weather data...");
     // myJson = "fetched weather data";
-    console.log(JSON.stringify(myJson, null, 2));
-    console.table(myJson);
     weatherData = myJson;
     fetchedCOR = weatherData.list[0].pop;
 
@@ -33,10 +31,10 @@ const getWeather = async () => {
     // check if the precipitation chance is greater than the userCOR
     if (userCOROriginalVal + userCORChange > fetchedCOR) {
         document.body.style.backgroundColor = "red";
-        console.log("Chance of rain changed more than user requested");
+        console.log("Chance of rain changed to more than user requested");
         statusVal = true;
     } else {
-        console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees");
+        console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees.\n and the user requested " + userCORChange + " change degrees of rain.\n continuing to wait for the weather to change.");
     }
     return myJson;
 }
@@ -44,7 +42,7 @@ const getWeather = async () => {
 // form submit event listener:
 document.getElementById("clock-form__inputs").addEventListener("submit", function (e) {
     e.preventDefault();
-    console.log("submit");
+    console.log("Form submitted");
     console.table(e);
     requestedTime = JSON.stringify(e.timeStamp);
     // get the values of the form inputs:
@@ -77,7 +75,7 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
 function compareTime() {
     if (currentTime < requestedTime) {
         let milliseconds =  (hourInterval * 60 * 60 * 1000) + (minuteInterval * 60 * 1000);
-        console.log("milliseconds: " + milliseconds);
+        console.log("milliseconds until next fetch: " + milliseconds);
         setTimeout(function () {
             getWeather(); // calls the weather API and returns the response
             if (statusVal === true) {
