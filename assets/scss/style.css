@@ -1304,4 +1304,7 @@ section {
     align-items: center;
     justify-content: flex-end;
   }
+}
+#autocomplete {
+  width: 30rem;
 }/*# sourceMappingURL=style.css.map */
