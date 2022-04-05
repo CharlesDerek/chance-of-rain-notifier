@@ -72,28 +72,14 @@ function initAutocomplete() {
   });
 }
 
-// Display google map
-
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}
-
 // Clock function
 
 document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(updateTime));
 
 function updateTime() {
-  document.documentElement.style.setProperty('--timer-day', "'" + moment().format('dd') + "'");
   document.documentElement.style.setProperty('--timer-hours', "'" + moment().format('k') + "'");
   document.documentElement.style.setProperty('--timer-minutes', "'" + moment().format('mm') + "'");
   document.documentElement.style.setProperty('--timer-seconds', "'" + moment().format('ss') + "'");
   requestAnimationFrame(updateTime);
 }
 
-// Video playback rate
-document.querySelector('video').defaultPlaybackRate = 0.1;
-document.querySelector('video').play();
