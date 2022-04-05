@@ -151,7 +151,6 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-    console.log(strTime);
 
     document.querySelector(".clock-hour").innerHTML = hours;
     document.querySelector(".clock-minutes").innerHTML = minutes;
@@ -183,13 +182,18 @@ function countdown() {
     
     secondsUntilRequestedTime = Math.floor(secondsUntilRequestedTime - (hoursUntilRequestedTime * 60 * 60) - (minutesUntilRequestedTime * 60));
     
-
-    document.querySelector(".hour").innerHTML = hoursUntilRequestedTime;
-    document.querySelector(".minutes").innerHTML = minutesUntilRequestedTime;
-    document.querySelector(".seconds").innerHTML = secondsUntilRequestedTime;
-    // This is where HH MM SS of current time would be assigned to the clock
-    // queryselect the class "hour":
-    setTimeout(countdown, 1000);
+    // check if the secondsUntilRequestedTime is less than 1:
+    if (secondsUntilRequestedTime > 1) {
+        document.querySelector(".hour").innerHTML = hoursUntilRequestedTime;
+        document.querySelector(".minutes").innerHTML = minutesUntilRequestedTime;
+        document.querySelector(".seconds").innerHTML = secondsUntilRequestedTime;
+        // This is where HH MM SS of current time would be assigned to the clock
+        // queryselect the class "hour":
+        setTimeout(countdown, 1000);
+    } else {
+        alert("It's time to go to head out!");
+        return;
+    }
 }
 
 function apiWeatherCallback() {
