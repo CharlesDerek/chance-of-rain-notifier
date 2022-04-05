@@ -52,7 +52,6 @@ function onPlaceChanged() {
   }
 }
 
-
 // global variables:
 let currentTime;
 let requestedTime;
@@ -152,6 +151,11 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    console.log(strTime);
+
+    document.querySelector(".clock-hour").innerHTML = hours;
+    document.querySelector(".clock-minutes").innerHTML = minutes;
+    document.querySelector(".clock-seconds").innerHTML = seconds;
     
     setTimeout(clock, 1000);
 })();
