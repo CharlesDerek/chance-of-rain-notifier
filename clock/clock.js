@@ -2,13 +2,20 @@
 // create a callback 
 let currentTime;
 let requestedTime;
+let hourInterval;
+let minuteInterval;
+let chanceOfRainChange;
 
 // form submit event listener:
 document.getElementById("clock-form__inputs").addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("submit");
-    console.log(e);
+    console.table(e);
     requestedTime = JSON.stringify(e.timeStamp);
+    // get the values of the form inputs:
+    minuteInterval = document.getElementById("minuteInputRangeId").value;
+    hourInterval = document.getElementById("hourInputRangeId").value;
+    chanceOfRainChange = document.getElementById("chanceOfRainOutputRange").value;
     compareTime();
 });
 
@@ -37,6 +44,7 @@ function compareTime() {
         var seconds = Math.floor((difference - (hours * 3600000) - (minutes * 60000)) / 1000);
         console.log("It's later by: " + hours + ":" + minutes + ":" + seconds);
     } else if (currentTime < requestedTime) {
+        // refer to the following date:
         console.log();
         var difference = requestedTime - currentTime;
         console.log("It's earlier!");
@@ -65,3 +73,11 @@ function compareTime() {
 //         document.getElementById("countdown").innerHTML = "It's the same time!";
 //     }
 // }
+
+
+//Code for making a REST API call to the weather API:
+// //const userAction = async () => {
+//     const response = await fetch(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key});
+//     const myJson = await response.json(); //extract JSON from the http response
+//     // do something with myJson
+//   }
