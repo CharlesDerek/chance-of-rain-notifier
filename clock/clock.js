@@ -1,3 +1,58 @@
+//array where location data can be stored in object form
+let placeArray = [];
+// function that accepts an address and console longs the coordinates
+function geocode(address) {
+  axios
+    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+      params: {
+        address: address,
+        key: "AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s",
+      },
+    })
+    .then(function (response) {
+      let name = response.data.results[0].formatted_address;
+      let latitude = response.data.results[0].geometry.location.lat;
+      let longitude = response.data.results[0].geometry.location.lng;
+      placeArray.push({ name: name, lat: latitude, lng: longitude });
+      console.log(name + " " + latitude + " " + longitude);
+      document
+        .getElementById("map")
+        .setAttribute(
+          "style",
+          `background-image: url(https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s)`
+        );
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+let autocomplete;
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("pac-input"),
+    {
+      types: ["establishment"],
+      componentRestrictions: { country: ["CA", "US", "AU", "UK"] },
+      fields: ["place_id", "geometry", "name"],
+    }
+  );
+  autocomplete.addListener("place_changed", onPlaceChanged);
+}
+
+function onPlaceChanged() {
+  let place = autocomplete.getPlace();
+  if (!place.geometry) {
+    //user did not select a prediction; reset input field
+    document.getElementById("pac-input").placeholder = "enter a place";
+  } else {
+    //display details about a valid place
+    geocode(place.name);
+    document.getElementById("pac-input").value = "";
+  }
+}
+
+
 // global variables:
 let currentTime;
 let requestedTime;
@@ -15,41 +70,49 @@ let i = 0;
 
 // create a function that calls the weather API and returns the response:
 const getWeather = async () => {
+    // check if the latitude and longitude are not empty:
+    if (latitude !== "" || longitude !== "") {
+        // if they are empty, call the getLocation function:
+        // await getLocation();
 
-    console.log("fetching weather data...");
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=8d5a25e33b672d7e9210bbf697c33ba9`);
-    let myJson = await response.json(); //extract JSON from the http response
-    // myJson = "fetched weather data";
-    weatherData = myJson;
-    fetchedCOR = weatherData.list[0].pop;
-
-    console.log("fetched weather data: " + fetchedCOR);
-    // make a query selector for percipitation__number
-    // assign the fetchedCOR to the query selector innerHTML:
-    document.querySelector("#percipitation__number").innerHTML = (fetchedCOR * 100).toFixed(0) + "%";
+        
+        console.log("fetching weather data...");
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=8d5a25e33b672d7e9210bbf697c33ba9`);
+        let myJson = await response.json(); //extract JSON from the http response
+        // myJson = "fetched weather data";
+        weatherData = myJson;
+        fetchedCOR = weatherData.list[0].pop;
     
-    console.log("fetched weather data");
-
-    // set the userCOROriginalVal to the fetched COR value only the first time ran:
-    if (userCOROriginalVal === undefined && i === 0) {
-        userCOROriginalVal = fetchedCOR;
-    }
-    i++;
-
-    // check if the precipitation chance is greater than the userCOR
-    if (userCOROriginalVal + (userCORChange*.01) < fetchedCOR) {
-        document.body.style.backgroundColor = "red";
-        console.log("Chance of rain changed to more than user requested");
-        console.log("userCOROriginalVal: " + userCOROriginalVal);
-        console.log("fetchedCOR: " + fetchedCOR);
-        console.log("userCORChange: " + userCORChange);
-        console.log("userCOROriginalVal + userCORChange: " + (userCOROriginalVal + userCORChange));
-
-        statusVal = true;
+        console.log("fetched weather data: " + fetchedCOR);
+        // make a query selector for percipitation__number
+        // assign the fetchedCOR to the query selector innerHTML:
+        document.querySelector("#percipitation__number").innerHTML = (fetchedCOR * 100).toFixed(0) + "%";
+        
+        console.log("fetched weather data");
+    
+        // set the userCOROriginalVal to the fetched COR value only the first time ran:
+        if (userCOROriginalVal === undefined && i === 0) {
+            userCOROriginalVal = fetchedCOR;
+        }
+        i++;
+    
+        // check if the precipitation chance is greater than the userCOR
+        if (userCOROriginalVal + (userCORChange*.01) < fetchedCOR) {
+            document.body.style.backgroundColor = "red";
+            console.log("Chance of rain changed to more than user requested");
+            console.log("userCOROriginalVal: " + userCOROriginalVal);
+            console.log("fetchedCOR: " + fetchedCOR);
+            console.log("userCORChange: " + userCORChange);
+            console.log("userCOROriginalVal + userCORChange: " + (userCOROriginalVal + userCORChange));
+    
+            statusVal = true;
+        } else {
+            console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees.\n and the user requested " + userCORChange + " change degrees of rain.\n continuing to wait for the weather to change.");
+        }
+        myJson;
     } else {
-        console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees.\n and the user requested " + userCORChange + " change degrees of rain.\n continuing to wait for the weather to change.");
+        alert("Please enter a location");
     }
-    myJson;
 }
 
 // form submit event listener:
@@ -64,6 +127,9 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minuteInterval = document.getElementById("minuteInputRangeId").value;
     hourInterval = document.getElementById("hourInputRangeId").value;
     userCORChange = document.getElementById("chanceOfRainRangeId").value;
+    latitude = placeArray[0].lat;
+    longitude = placeArray[0].lng;
+    // fetch latitude and longitude from 
     // call the weather API once when the form is submitted:
     getWeather();
     apiWeatherCallback();
