@@ -97,7 +97,7 @@
         <div class="percipitation">
           <h2 class="percipitation__title">Chance of Rain</h2>
           <div class="percipitation__percentage">
-            <span id="percipitation__number">77%</span>
+            <span id="percipitation__number">--</span>
           </div>
         </div>
         <!-- End of Percipitation Container -->
@@ -122,6 +122,29 @@
         <!-- Sliders -->
 
         <div class="slider">
+          <!-- Clock Input Container -->
+          <h1>Clock: <span id="clock"></span></h1>
+          <div id="countdown"><div>
+          <form action="" id="clock-form__inputs">
+              <label for="time">Time of Event:</label>
+              <input type="time" name="time" id="time" required>
+              <br>
+              <output name="minuteOutputRangeId" id="minuteOutputRange">30 Minutes interval for checking chance of rain:</output>
+              <br>
+              <input type="range" name="minuteInputRange" id="minuteInputRangeId" value="30" min="1" max="60" oninput="minuteOutputRange.value = minuteInputRangeId.value+' Minutes interval for checking chance of rain:'" required>
+              <br>
+              <output name="hourOutputRangeId" id="hourOutputRange">0 Hours interval for checking chance of rain:</output>
+              <br>
+              <input type="range" name="hourInputRange" id="hourInputRangeId" value="0" min="0" max="24" oninput="hourOutputRange.value = hourInputRangeId.value+' Hours interval for checking chance of rain:'">
+              <br>
+              <output name="chanceOfRainOutputRangeId" id="chanceOfRainOutputRange">Percent change in chance of rain: 20%</output>
+              <br>
+              <input type="range" name="chanceOfRainRange" id="chanceOfRainRangeId" value="20" min="1" max="100" oninput="chanceOfRainOutputRange.value = 'Percent change in chance of rain: '+chanceOfRainRangeId.value+'%'">
+              <br>
+
+              <input id="input-submit" type="submit" value="Submit">
+          </form>
+          <!-- End of Clock Input Container -->
           <div class="slider-column">
             <div class="slider-title">
               <h2 class="slider-title__name">Hours</h2>
