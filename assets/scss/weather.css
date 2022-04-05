@@ -44,7 +44,7 @@ body {
   min-width: 100%;
   min-height: 56.25vw;
   position: absolute;
-  bottom: 25%;
+  bottom: 0;
 }
 
 .header {
@@ -95,9 +95,9 @@ body {
 
 #map {
   margin: 1rem auto;
-  height: 25rem;
   border-radius: 1.5rem;
   width: 90%;
+  height: 15rem;
   background-repeat: no-repeat;
   background-image: url("https://maps.googleapis.com/maps/api/staticmap?center=San%20Francisco,CA&zoom=12&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s");
   background-position: center;
@@ -113,11 +113,24 @@ body {
     width: 70%;
   }
 }
-@media (max-height: 48rem) {
+@media (max-height: 46.25rem) {
   #map {
-    height: 15rem;
-    width: 50%;
+    height: 10rem;
   }
+}
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(197, 195, 195, 0.2);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  color: white;
+}
+.clock-col {
+  margin: 0 1rem;
 }
 
 .info__container {
@@ -147,7 +160,7 @@ body {
   justify-content: space-between;
 }
 .percipitation__title {
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-align: center;
   color: white;
   font-family: "Poppins", cursive;
@@ -162,53 +175,64 @@ body {
   font-family: "Poppins", cursive;
 }
 
-.clock-container {
+.timer-container {
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 33%;
+  padding: 3rem 0;
 }
 @media (min-width: 48rem) {
-  .clock-container {
+  .timer-container {
     flex-direction: row;
     width: 50%;
-    padding: 3rem;
+    padding: 5rem;
     font-size: 2.5rem;
   }
 }
 @media (min-width: 80rem) {
-  .clock-container {
+  .timer-container {
     flex-direction: row;
     width: 50%;
-    padding: 3rem;
+    padding: 5rem;
   }
 }
-.clock-col {
+.timer-col {
   text-align: center;
 }
 @media (min-width: 48rem) {
-  .clock-col {
+  .timer-col {
     margin: 0 1.8rem;
   }
 }
-.clock-timer:before {
+.timer-timer:before {
   color: #fff;
   font-size: 4.2rem;
   text-transform: uppercase;
 }
-.clock-label {
+.timer-label {
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   font-size: 0.7rem;
   margin-top: 10px;
 }
 @media (min-width: 48rem) {
-  .clock-label {
+  .timer-label {
     font-size: 1rem;
   }
 }
 
-.slider-title__name {
-  font-size: 1rem;
+.slider__form {
+  width: 100%;
+  font-size: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-input {
+  width: 50%;
+  text-align: center;
 }/*# sourceMappingURL=weather.css.map */

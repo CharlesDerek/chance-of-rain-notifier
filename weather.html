@@ -23,7 +23,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="./index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
     <!-- link the google api places library  -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s&libraries=places&callback=initAutocomplete"
@@ -45,11 +45,7 @@
       <div class="header">
         <div class="header__container">
           <a href="weather.html" class="header__logo">
-            <img
-              class="header__logo"
-              src="assets/img/ButlerLogo.png"
-              alt="The Weather Butler"
-            />
+            <img class="header__logo" src="assets/img/ButlerLogo.png" alt="The Weather Butler" />
           </a>
           <h1 class="header__title">Weather Butler</h1>
         </div>
@@ -59,16 +55,27 @@
     <main>
       <!-- Google Map Container -->
       <div class="map__container">
-        <input
-          id="pac-input"
-          class="controls"
-          type="text"
-          placeholder="Search Box"
-        />
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
         <div id="map"></div>
       </div>
-
       <!-- End of Google Map Container -->
+
+      <!-- Clock container -->
+      <div class="clock-container">
+        <div class="clock-col">
+          <p class="clock-label">Hours</p>
+          <span class="clock-hour">00</span>
+        </div>
+        <div class="clock-col">
+          <p class="clock-label">Minutes</p>
+          <span class="clock-minutes">00</span>
+        </div>
+        <div class="clock-col">
+          <p class="clock-label">Seconds</p>
+          <span class="clock-seconds">00</span>
+        </div>
+      </div>
+      <!-- End of Clock container -->
 
       <!-- Info Container -->
       <div class="info__container">
@@ -81,18 +88,18 @@
         </div>
         <!-- End of Percipitation Container -->
 
-        <!-- Clock container -->
-        <div class="clock-container">
-          <div class="clock-col">
-            <p class="clock-label">Hours</p>
+        <!-- Timer container -->
+        <div class="timer-container">
+          <div class="timer-col">
+            <p class="timer-label">Hours</p>
             <span class="hour">00</span>
           </div>
-          <div class="clock-col">
-            <p class="clock-label">Minutes</p>
+          <div class="timer-col">
+            <p class="timer-label">Minutes</p>
             <span class="minutes">00</span>
           </div>
-          <div class="clock-col">
-            <p class="clock-label">Seconds</p>
+          <div class="timer-col">
+            <p class="timer-label">Seconds</p>
             <span class="seconds">00</span>
           </div>
         </div>
@@ -102,95 +109,63 @@
 
         <div class="slider">
           <!-- Clock Input Container -->
-          <h1>Clock: <span id="clock"></span></h1>
-          <div id="countdown"><div>
-          <form action="" id="clock-form__inputs">
-              <label for="time">Time of Event:</label>
-              <input type="time" name="time" id="time" required>
-              <br>
-              <output name="minuteOutputRangeId" id="minuteOutputRange">30 Minutes interval for checking chance of rain:</output>
-              <br>
-              <input type="range" name="minuteInputRange" id="minuteInputRangeId" value="30" min="1" max="60" oninput="minuteOutputRange.value = minuteInputRangeId.value+' Minutes interval for checking chance of rain:'" required>
-              <br>
-              <output name="hourOutputRangeId" id="hourOutputRange">0 Hours interval for checking chance of rain:</output>
-              <br>
-              <input type="range" name="hourInputRange" id="hourInputRangeId" value="0" min="0" max="24" oninput="hourOutputRange.value = hourInputRangeId.value+' Hours interval for checking chance of rain:'">
-              <br>
-              <output name="chanceOfRainOutputRangeId" id="chanceOfRainOutputRange">Percent change in chance of rain: 20%</output>
-              <br>
-              <input type="range" name="chanceOfRainRange" id="chanceOfRainRangeId" value="20" min="1" max="100" oninput="chanceOfRainOutputRange.value = 'Percent change in chance of rain: '+chanceOfRainRangeId.value+'%'">
-              <br>
+          <div id="countdown">
+            <div>
+              <form class="slider__form" action="" id="clock-form__inputs">
+                <label for="time">Time of Event:</label>
+                <input class="date-input" type="time" name="time" id="time" required />
+                <br />
+                <output name="minuteOutputRangeId" id="minuteOutputRange"
+                  >30 Minutes between check :</output
+                >
+                <br />
+                <input
+                  type="range"
+                  name="minuteInputRange"
+                  id="minuteInputRangeId"
+                  value="30"
+                  min="1"
+                  max="60"
+                  oninput="minuteOutputRange.value = minuteInputRangeId.value+' minutes between check :'"
+                  required
+                />
+                <br />
+                <output name="hourOutputRangeId" id="hourOutputRange"
+                  >0 Hours between check :</output
+                >
+                <br />
+                <input
+                  type="range"
+                  name="hourInputRange"
+                  id="hourInputRangeId"
+                  value="0"
+                  min="0"
+                  max="24"
+                  oninput="hourOutputRange.value = hourInputRangeId.value+' Hours between check :'"
+                />
+                <br />
+                <output name="chanceOfRainOutputRangeId" id="chanceOfRainOutputRange"
+                  >Percent change in chance of rain: 20%</output
+                >
+                <br />
+                <input
+                  type="range"
+                  name="chanceOfRainRange"
+                  id="chanceOfRainRangeId"
+                  value="20"
+                  min="1"
+                  max="100"
+                  oninput="chanceOfRainOutputRange.value = 'Percent change in chance of rain: '+chanceOfRainRangeId.value+'%'"
+                />
+                <br />
 
-              <input id="input-submit" type="submit" value="Submit">
-          </form>
+                <input id="input-submit" type="submit" value="Submit" />
+              </form>
+            </div>
+          </div>
           <!-- End of Clock Input Container -->
-          <!-- <div class="slider-column">
-            <div class="slider-title">
-              <h2 class="slider-title__name">Hours</h2>
-            </div>
-            <div class="slider-hour">
-              <div class="slider-hour__container">
-                <div class="slider-hour__value">
-                  <span id="slider-hour__value">0</span>
-                </div>
-              </div>
-            </div>
-            <div class="slider-hour__slider">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="0"
-                class="slider-hour__slider-input"
-                id="slider-hour"
-              />
-            </div>
-          </div>
-          <div class="slider-column">
-            <div class="slider-title">
-              <h2 class="slider-title__name">Minutes</h2>
-            </div>
-            <div class="slider-minutes">
-              <div class="slider-minutes__container">
-                <div class="slider-minutes__value">
-                  <span id="slider-minutes__value">0</span>
-                </div>
-              </div>
-            </div>
-            <div class="slider-minutes__slider">
-              <input
-                type="range"
-                min="0"
-                max="60"
-                value="0"
-                class="slider-minutes__slider-input"
-                id="slider-minutes"
-              />
-            </div>
-          </div>
-          <div class="slider-column">
-            <div class="slider-title">
-              <h2 class="slider-title__name">% Change</h2>
-            </div>
-            <div class="slider-difference">
-              <div class="slider-difference__container">
-                <div class="slider-difference__value">
-                  <span id="slider-difference__value">0</span>
-                </div>
-              </div>
-            </div>
-            <div class="slider-difference__slider">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="0"
-                class="slider-difference__slider-input"
-                id="slider-difference"
-              />
-            </div>
-          </div>
-        </div> -->
+        </div>
+
         <!-- End of Sliders -->
       </div>
 

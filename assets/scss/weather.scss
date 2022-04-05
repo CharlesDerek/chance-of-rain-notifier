@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 h1,
 h2,
@@ -17,7 +17,7 @@ h6 {
 }
 
 body {
-  background-image: url("../img/pexels-min-an-1403550.jpg");
+  background-image: url('../img/pexels-min-an-1403550.jpg');
   background-color: rgba($color: #7e9bb1, $alpha: 0.8);
   background-position: center;
   background-size: cover;
@@ -41,7 +41,7 @@ body {
   min-width: 100%;
   min-height: 56.25vw;
   position: absolute;
-  bottom: 25%;
+  bottom: 0;
 }
 
 // Header Section
@@ -96,11 +96,11 @@ body {
 
 #map {
   margin: 1rem auto;
-  height: 25rem;
   border-radius: 1.5rem;
   width: 90%;
+  height: 15rem;
   background-repeat: no-repeat;
-  background-image: url("https://maps.googleapis.com/maps/api/staticmap?center=San%20Francisco,CA&zoom=12&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s");
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=San%20Francisco,CA&zoom=12&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s');
   background-position: center;
   background-size: cover;
   @media (min-width: 48rem) {
@@ -111,9 +111,26 @@ body {
     width: 70%;
   }
 
-  @media (max-height: 48rem) {
-    height: 15rem;
-    width: 50%;
+  @media (max-height: 46.25rem) {
+    height: 10rem;
+  }
+}
+
+// Clock section
+.clock {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba($color: rgb(197, 195, 195), $alpha: 0.2);
+    box-shadow: 0 0.5rem 1rem rgba($color: #000, $alpha: 0.2);
+    color: white;
+  }
+
+  &-col {
+    margin: 0 1rem;
   }
 }
 
@@ -147,10 +164,10 @@ body {
   justify-content: space-between;
 
   &__title {
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-align: center;
     color: rgba($color: #fff, $alpha: 1);
-    font-family: "Poppins", cursive;
+    font-family: 'Poppins', cursive;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1.5rem;
     padding: 0.25rem 0.5rem;
@@ -160,32 +177,32 @@ body {
   &__percentage {
     font-size: 3rem;
     color: rgba($color: #fff, $alpha: 1);
-    font-family: "Poppins", cursive;
+    font-family: 'Poppins', cursive;
   }
 }
 
 // Clock column
 
-.clock {
+.timer {
   &-container {
-    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15),
-      0 15px 90px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 33%;
+    padding: 3rem 0;
 
     @media (min-width: 48rem) {
       flex-direction: row;
       width: 50%;
-      padding: 3rem;
+      padding: 5rem;
       font-size: 2.5rem;
     }
 
     @media (min-width: 80rem) {
       flex-direction: row;
       width: 50%;
-      padding: 3rem;
+      padding: 5rem;
     }
   }
 
@@ -217,8 +234,16 @@ body {
 
 // Slider column
 
-.slider {
-  &-title__name {
-    font-size: 1rem;
-  }
+.slider__form {
+  width: 100%;
+  font-size: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-input {
+  width: 50%;
+  text-align: center;
 }
