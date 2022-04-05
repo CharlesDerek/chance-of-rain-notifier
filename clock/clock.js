@@ -94,10 +94,9 @@ const getWeather = async () => {
             userCOROriginalVal = fetchedCOR;
         }
         i++;
-    
+
         // check if the precipitation chance is greater than the userCOR
         if (userCOROriginalVal + (userCORChange*.01) < fetchedCOR) {
-            document.body.style.backgroundColor = "red";
             console.log("Chance of rain changed to more than user requested");
             console.log("userCOROriginalVal: " + userCOROriginalVal);
             console.log("fetchedCOR: " + fetchedCOR);
@@ -105,6 +104,8 @@ const getWeather = async () => {
             console.log("userCOROriginalVal + userCORChange: " + (userCOROriginalVal + userCORChange));
     
             statusVal = true;
+            
+            alert("It is going to rain! the percentage passed your requested amount is: " + (fetchedCOR * 100).toFixed(0) + "%");
         } else {
             console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees.\n and the user requested " + userCORChange + " change degrees of rain.\n continuing to wait for the weather to change.");
         }
