@@ -63,15 +63,15 @@ let userCORChange;
 let fetchedCOR;
 let weatherData;
 let forcast;
-let latitude;
-let longitude;
+let latitude = -1;
+let longitude = -1;
 let statusVal = false;
 let i = 0;
 
 // create a function that calls the weather API and returns the response:
 const getWeather = async () => {
     // check if the latitude and longitude are not empty:
-    if (latitude !== "" || longitude !== "") {
+    if (latitude !== -1 && longitude !== -1) {
         // if they are empty, call the getLocation function:
         // await getLocation();
 
@@ -127,13 +127,16 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minuteInterval = document.getElementById("minuteInputRangeId").value;
     hourInterval = document.getElementById("hourInputRangeId").value;
     userCORChange = document.getElementById("chanceOfRainRangeId").value;
-    latitude = placeArray[0].lat;
-    longitude = placeArray[0].lng;
-    // fetch latitude and longitude from 
-    // call the weather API once when the form is submitted:
-    getWeather();
-    apiWeatherCallback();
-    countdown();
+    // try catch value to check if placeArray[0].lat is undefined:
+    if (placeArray.length > 0) {
+        latitude = placeArray[0].lat;
+        longitude = placeArray[0].lng;  
+        getWeather();
+        apiWeatherCallback();
+        countdown();
+    } else {
+        alert("Please enter a location");
+    }
 });
 
 // create page active timestamp
@@ -149,7 +152,7 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-    document.getElementById("clock").innerHTML = strTime;
+    
     setTimeout(clock, 1000);
 })();
 
