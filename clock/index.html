@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Clock: <span id="clock"></span></h1>
+        <div id="countdown"><div>
+        <form action="" id="clock-form__inputs">
+            <label for="time">Time of Event:</label>
+            <input type="time" name="time" id="time" required>
+            <br>
+            <output name="minuteOutputRangeId" id="minuteOutputRange">30 Minutes interval for checking chance of rain:</output>
+            <br>
+            <input type="range" name="minuteInputRange" id="minuteInputRangeId" value="30" min="1" max="60" oninput="minuteOutputRange.value = minuteInputRangeId.value+' Minutes interval for checking chance of rain:'" required>
+            <br>
+            <output name="hourOutputRangeId" id="hourOutputRange">0 Hours interval for checking chance of rain:</output>
+            <br>
+            <input type="range" name="hourInputRange" id="hourInputRangeId" value="0" min="0" max="24" oninput="hourOutputRange.value = hourInputRangeId.value+' Hours interval for checking chance of rain:'">
+            <br>
+            <output name="chanceOfRainOutputRangeId" id="chanceOfRainOutputRange">Percent change in chance of rain: 20%</output>
+            <br>
+            <input type="range" name="chanceOfRainRange" id="chanceOfRainRangeId" value="20" min="1" max="100" oninput="chanceOfRainOutputRange.value = 'Percent change in chance of rain: '+chanceOfRainRangeId.value+'%'">
+            <br>
+
+            <input id="input-submit" type="submit" value="Submit">
+        </form>
+        <pre id="clock-output-sandbox">
+        </pre>
+        <script src="clock.js" async defer></script>
+    </body>
+</html>
