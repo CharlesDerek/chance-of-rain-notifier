@@ -15,12 +15,14 @@ let i = 0;
 
 // create a function that calls the weather API and returns the response:
 const getWeather = async () => {
+    console.log("fetching weather data...");
     const response = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=38.8951&lon=-77.0364&appid=8d5a25e33b672d7e9210bbf697c33ba9");
     let myJson = await response.json(); //extract JSON from the http response
-    console.log("fetching weather data...");
     // myJson = "fetched weather data";
     weatherData = myJson;
     fetchedCOR = weatherData.list[0].pop;
+    
+    console.log("fetched weather data");
 
     // set the userCOROriginalVal to the fetched COR value only the first time ran:
     if (userCOROriginalVal === undefined && i === 0) {
@@ -29,9 +31,14 @@ const getWeather = async () => {
     i++;
 
     // check if the precipitation chance is greater than the userCOR
-    if (userCOROriginalVal + userCORChange > fetchedCOR) {
+    if (userCOROriginalVal + (userCORChange*.01) < fetchedCOR) {
         document.body.style.backgroundColor = "red";
         console.log("Chance of rain changed to more than user requested");
+        console.log("userCOROriginalVal: " + userCOROriginalVal);
+        console.log("fetchedCOR: " + fetchedCOR);
+        console.log("userCORChange: " + userCORChange);
+        console.log("userCOROriginalVal + userCORChange: " + (userCOROriginalVal + userCORChange));
+
         statusVal = true;
     } else {
         console.log("The weather only changed by " + (fetchedCOR - userCOROriginalVal) + " degrees.\n and the user requested " + userCORChange + " change degrees of rain.\n continuing to wait for the weather to change.");
@@ -48,7 +55,7 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
     // get the values of the form inputs:
     minuteInterval = document.getElementById("minuteInputRangeId").value;
     hourInterval = document.getElementById("hourInputRangeId").value;
-    chanceOfRainChange = document.getElementById("chanceOfRainRangeId").value;
+    userCORChange = document.getElementById("chanceOfRainRangeId").value;
     // call the weather API once when the form is submitted:
     getWeather();
     compareTime();
@@ -75,7 +82,7 @@ document.getElementById("clock-form__inputs").addEventListener("submit", functio
 function compareTime() {
     if (currentTime < requestedTime) {
         let milliseconds =  (hourInterval * 60 * 60 * 1000) + (minuteInterval * 60 * 1000);
-        console.log("milliseconds until next fetch: " + milliseconds);
+        console.log(hourInterval+" hours, and "+minuteInterval+" minutes until next fetch");
         setTimeout(function () {
             getWeather(); // calls the weather API and returns the response
             if (statusVal === true) {
