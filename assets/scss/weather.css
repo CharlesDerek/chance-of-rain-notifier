@@ -45,8 +45,13 @@ body {
   justify-content: center;
 }
 
+#pac-input {
+  width: 50%;
+}
+
 #map {
   margin: auto;
   height: 20rem;
-  width: 25rem;
+  width: 95%;
+  opacity: 70%;
 }/*# sourceMappingURL=weather.css.map */
