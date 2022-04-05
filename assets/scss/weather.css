@@ -19,14 +19,36 @@ h6 {
 
 body {
   background-image: url("../img/pexels-min-an-1403550.jpg");
+  background-color: rgba(126, 155, 177, 0.8);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  position: relative;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.video-container__weather {
+  height: 100%;
+  width: 177.77777778vh;
+  min-width: 100%;
+  min-height: 56.25vw;
+  position: absolute;
+  bottom: 25%;
 }
 
 .header {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(197, 195, 195, 0.2);
 }
 .header__container {
   display: flex;
@@ -38,22 +60,148 @@ body {
 .header__title {
   font-size: 2rem;
   color: #fff;
-  opacity: 70%;
+  opacity: 0.9;
   font-family: "Lobster", cursive;
 }
 .header__logo {
   width: 2.5rem;
   height: 2.5rem;
+  opacity: 0.9;
 }
 
 .map__container {
   display: flex;
-  padding: 5rem 3rem 0.25rem;
+  padding: 2rem 3rem 0.25rem;
   justify-content: center;
 }
 
+#pac-input {
+  width: 75%;
+  text-align: center;
+}
+@media (min-width: 48rem) {
+  #pac-input {
+    width: 50%;
+  }
+}
+@media (min-width: 80rem) {
+  #pac-input {
+    width: 30%;
+  }
+}
+
 #map {
-  margin: auto;
-  height: 20rem;
-  width: 25rem;
+  margin: 1rem auto;
+  height: 25rem;
+  border-radius: 1.5rem;
+  width: 90%;
+}
+@media (min-width: 48rem) {
+  #map {
+    width: 75%;
+  }
+}
+@media (min-width: 80rem) {
+  #map {
+    width: 70%;
+  }
+}
+@media (max-height: 48rem) {
+  #map {
+    height: 15rem;
+    width: 50%;
+  }
+}
+
+.info__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 1rem rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: white;
+}
+@media (min-width: 48rem) {
+  .info__container {
+    padding: 0 2rem;
+    justify-content: space-around;
+  }
+}
+
+.percipitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.percipitation__title {
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  font-family: "Poppins", cursive;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
+}
+.percipitation__percentage {
+  font-size: 3rem;
+  color: white;
+  font-family: "Poppins", cursive;
+}
+
+.clock-container {
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 33%;
+}
+@media (min-width: 48rem) {
+  .clock-container {
+    flex-direction: row;
+    width: 50%;
+    padding: 3rem;
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 80rem) {
+  .clock-container {
+    flex-direction: row;
+    width: 50%;
+    padding: 3rem;
+  }
+}
+.clock-col {
+  text-align: center;
+}
+@media (min-width: 48rem) {
+  .clock-col {
+    margin: 0 1.8rem;
+  }
+}
+.clock-timer:before {
+  color: #fff;
+  font-size: 4.2rem;
+  text-transform: uppercase;
+}
+.clock-label {
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-top: 10px;
+}
+@media (min-width: 48rem) {
+  .clock-label {
+    font-size: 1rem;
+  }
+}
+
+.slider-title__name {
+  font-size: 1rem;
 }/*# sourceMappingURL=weather.css.map */

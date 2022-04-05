@@ -1,0 +1,133 @@
+// Info section
+.info__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 15px 15px 90px 0 rgba(0, 0, 0, 0.7);
+}
+
+// Perciptation section
+.percipation {
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    opacity: 85%;
+    font-family: 'Poppins', cursive;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    padding: 0.25rem 0.5rem;
+    margin-right: 2rem;
+  }
+
+  &__percentage {
+    font-size: 4rem;
+    color: white;
+    opacity: 85%;
+    font-family: 'Poppins', cursive;
+    margin: 0 2rem;
+  }
+}
+
+// Clock section
+
+.clock {
+  &-hours {
+    &:before {
+      content: var(--timer-hours);
+      content: '00';
+    }
+  }
+  &-minutes {
+    &:before {
+      content: var(--timer-minutes);
+      content: '00';
+    }
+  }
+  &-seconds {
+    &:before {
+      content: var(--timer-seconds);
+      content: '00';
+    }
+  }
+}
+
+.clock {
+  &-container {
+    padding: 3.75rem 1.25rem 0;
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+  }
+
+  &-col {
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 40px;
+    min-width: 90px;
+    position: relative;
+    &:not(:last-child):before,
+    &:not(:last-child):after {
+      content: '';
+      background-color: rgba(255, 255, 255, 0.3);
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      right: -42px;
+    }
+    &:not(:last-child):before {
+      top: 35%;
+    }
+    &:not(:last-child):after {
+      top: 50%;
+    }
+  }
+  &-timer {
+    &:before {
+      color: #fff;
+      font-size: 4.2rem;
+      text-transform: uppercase;
+    }
+  }
+  &-label {
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 10px;
+  }
+}
+
+// Slider section
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &-column {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+  }
+
+&-title__name {
+    font-size: 1.5rem;
+    color: white;
+    opacity: 85%;
+    font-family: 'Poppins', cursive;
+    margin-bottom: 1rem;
+}
+}
