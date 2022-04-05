@@ -42,6 +42,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- link the google api places library  -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s&libraries=places&callback=initAutocomplete"
@@ -49,6 +50,7 @@
       defer
     ></script>
     <script src="./assets/js/autocomplete.js" defer></script>
+    <script src="./assets/js/geocoding.js" defer></script>
   </head>
 
   <body>
@@ -119,8 +121,16 @@
 
       <section class="inner-page">
         <div class="container">
-          <p>Autocomplete test:</p>
-          <input id="autocomplete" placeholder="enter a place" type="text" />
+          <form id="address-form">
+            <p id="details">Autocomplete test:</p>
+            <input
+              id="autocomplete"
+              placeholder="enter a place"
+              type="text"
+              name="addressInput"
+            />
+            <button type="submit">GO</button>
+          </form>
         </div>
       </section>
     </main>
