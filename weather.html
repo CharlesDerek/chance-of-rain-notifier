@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      <link
+      href="https://fonts.googleapis.com/css2?family=Galada&family=Lobster&family=Montserrat&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/scss/weather.css" />
+
+    <!-- Places polyfill -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="./index.js"></script>
+
+    <title>The Weather Butler</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <div class="header__container">
+          <a href="weather.html" class="header__logo">
+            <img class="header__logo" src="assets/img/ButlerLogo.png" alt="The Weather Butler" />
+          </a>
+          <h1 class="header__title">The Weather Butler</h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Google Map Container -->
+      <div class="map__container">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+    </div>
+    <div id="map"></div>
+
+      <!-- End of Google Map Container -->
+
+      <!-- Weather Container -->
+      <div class="weather-container">
+        <div class="weather-container__clock">
+          <div class="weather-container__clock__time">
+            <span id="time"></span>
+          </div>
+          <div class="weather-container__clock__date">
+            <span id="date"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- -->
+    </main>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa6Sr8hUpf1UZT_AFN5hZWU_wlf3BNg2g&callback=initMap"
+      async
+      defer
+    ></script>
+  </body>
+</html>
