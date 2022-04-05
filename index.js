@@ -93,3 +93,7 @@ function updateTime() {
   document.documentElement.style.setProperty('--timer-seconds', "'" + moment().format('ss') + "'");
   requestAnimationFrame(updateTime);
 }
+
+// Video playback rate
+document.querySelector('video').defaultPlaybackRate = 0.1;
+document.querySelector('video').play();
