@@ -64,7 +64,8 @@ function onPlaceChanged() {
 //     map: map,
 //   });
 // }
+//this seems to be enough to generate the map and it wraps the input all by itself somehow TODO: figure out how that works
 const map = new google.maps.Map(document.getElementById("map"), {
-  zoom: 8,
-  center: uluru,
+  zoom: 4,
+  center: { lat: 35.344, lng: -70.036 },
 });
