@@ -1,3 +1,5 @@
+@use './partials/mixins';
+
 *,
 *::before,
 *::after {
@@ -55,116 +57,127 @@ body {
 
 .map__container {
   display: flex;
-  padding: 5rem 3rem 0.25rem;
+  padding: 2rem 3rem 0.25rem;
   justify-content: center;
 }
 
 #pac-input {
-  width: 50%;
+  width: 75%;
+  text-align: center;
+
+  @media (min-width: 48rem) {
+    width: 50%;
+  }
+  @media (min-width: 80rem) {
+    width: 30%;
+  }
 }
 
 #map {
-  margin: auto;
-  height: 20rem;
+margin: 1rem auto;
+  height: 25rem;
   opacity: 70%;
-}
+  border-radius: 1.5rem;
+  width: 90%;
 
-// Info section
+  @media (min-width: 48rem) {
+    width: 75%;
+  }
+
+  @media (min-width: 80rem) {
+    width: 50%;
+  }
+
+  @media (max-height: 48rem) {
+    height: 15rem;
+    width: 50%;
+  }
+    
+  }
+    
+  
+
+
+// Info Section
+
 .info__container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
   width: 100%;
   position: absolute;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 15px 15px 90px 0 rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: rgba($color: #fff, $alpha: 0.7);
+
+  @media (min-width: 48rem) {
+    padding: 0 2rem;
+    justify-content: space-around;
+  }
 }
 
-// Perciptation section
-.percipation {
+// Perciptation column
+
+.percipitation {
   display: flex;
-  color: white;
-  font-size: 1.5rem;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem;
   justify-content: space-between;
 
   &__title {
     font-size: 1rem;
     text-align: center;
-    color: white;
-    opacity: 85%;
+    color: rgba($color: #fff, $alpha: 0.7);
     font-family: 'Poppins', cursive;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 25px;
+    border-radius: 1.5rem;
     padding: 0.25rem 0.5rem;
-    margin-right: 2rem;
+    margin-bottom: 1rem;
   }
 
   &__percentage {
-    font-size: 4rem;
-    color: white;
-    opacity: 85%;
+    font-size: 3rem;
+    color: rgba($color: #fff, $alpha: 0.7);
     font-family: 'Poppins', cursive;
-    margin: 0 2rem;
   }
 }
 
-// Clock section
-
-.clock {
-  &-hours {
-    &:before {
-      content: var(--timer-hours);
-      content: '00';
-    }
-  }
-  &-minutes {
-    &:before {
-      content: var(--timer-minutes);
-      content: '00';
-    }
-  }
-  &-seconds {
-    &:before {
-      content: var(--timer-seconds);
-      content: '00';
-    }
-  }
-}
+// Clock column
 
 .clock {
   &-container {
-    padding: 3.75rem 1.25rem 0;
     box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
     display: flex;
+    flex-direction: column;
     justify-content: center;
+
+    @media (min-width: 48rem) {
+      flex-direction: row;
+      width: 50%;
+      padding: 3rem;
+      font-size: 2.5rem;
+  }
+
+    @media (min-width: 80rem) {
+      flex-direction: row;
+      width: 50%;
+      padding: 3rem;
+  }
   }
 
   &-col {
     text-align: center;
-    margin-right: 40px;
-    margin-left: 40px;
-    min-width: 90px;
-    position: relative;
-    &:not(:last-child):before,
-    &:not(:last-child):after {
-      content: '';
-      background-color: rgba(255, 255, 255, 0.3);
-      height: 5px;
-      width: 5px;
-      border-radius: 50%;
-      display: block;
-      position: absolute;
-      right: -42px;
+    min-width: 5rem;
+
+    @media (min-width: 48rem) {
+      margin: 0 1.8rem;
+      
     }
-    &:not(:last-child):before {
-      top: 35%;
-    }
-    &:not(:last-child):after {
-      top: 50%;
-    }
+
+
   }
   &-timer {
     &:before {
@@ -178,27 +191,19 @@ body {
     text-transform: uppercase;
     font-size: 0.7rem;
     margin-top: 10px;
-  }
-}
 
-// Slider section
+    @media (min-width: 48rem) {
+      font-size: 1rem;
+    }
+      
+    }
+  }
+
+
+// Slider column
+
 .slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  &-column {
-    text-align: center;
-    padding: 1rem;
-    color: white;
+  &-title__name {
+    font-size: 1rem;
   }
-
-&-title__name {
-    font-size: 1.5rem;
-    color: white;
-    opacity: 85%;
-    font-family: 'Poppins', cursive;
-    margin-bottom: 1rem;
-}
 }

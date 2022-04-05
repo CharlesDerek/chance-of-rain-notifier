@@ -49,99 +49,120 @@ body {
 
 .map__container {
   display: flex;
-  padding: 5rem 3rem 0.25rem;
+  padding: 2rem 3rem 0.25rem;
   justify-content: center;
 }
 
 #pac-input {
-  width: 50%;
+  width: 75%;
+  text-align: center;
+}
+@media (min-width: 48rem) {
+  #pac-input {
+    width: 50%;
+  }
+}
+@media (min-width: 80rem) {
+  #pac-input {
+    width: 30%;
+  }
 }
 
 #map {
-  margin: auto;
-  height: 20rem;
+  margin: 1rem auto;
+  height: 25rem;
   opacity: 70%;
+  border-radius: 1.5rem;
+  width: 90%;
+}
+@media (min-width: 48rem) {
+  #map {
+    width: 75%;
+  }
+}
+@media (min-width: 80rem) {
+  #map {
+    width: 50%;
+  }
+}
+@media (max-height: 48rem) {
+  #map {
+    height: 15rem;
+    width: 50%;
+  }
 }
 
 .info__container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
   width: 100%;
   position: absolute;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 15px 15px 90px 0 rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+@media (min-width: 48rem) {
+  .info__container {
+    padding: 0 2rem;
+    justify-content: space-around;
+  }
 }
 
-.percipation {
+.percipitation {
   display: flex;
-  color: white;
-  font-size: 1.5rem;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem;
   justify-content: space-between;
 }
-.percipation__title {
+.percipitation__title {
   font-size: 1rem;
   text-align: center;
-  color: white;
-  opacity: 85%;
+  color: rgba(255, 255, 255, 0.7);
   font-family: "Poppins", cursive;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
+  border-radius: 1.5rem;
   padding: 0.25rem 0.5rem;
-  margin-right: 2rem;
+  margin-bottom: 1rem;
 }
-.percipation__percentage {
-  font-size: 4rem;
-  color: white;
-  opacity: 85%;
+.percipitation__percentage {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.7);
   font-family: "Poppins", cursive;
-  margin: 0 2rem;
-}
-
-.clock-hours:before {
-  content: var(--timer-hours);
-  content: "00";
-}
-.clock-minutes:before {
-  content: var(--timer-minutes);
-  content: "00";
-}
-.clock-seconds:before {
-  content: var(--timer-seconds);
-  content: "00";
 }
 
 .clock-container {
-  padding: 3.75rem 1.25rem 0;
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+@media (min-width: 48rem) {
+  .clock-container {
+    flex-direction: row;
+    width: 50%;
+    padding: 3rem;
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 80rem) {
+  .clock-container {
+    flex-direction: row;
+    width: 50%;
+    padding: 3rem;
+  }
 }
 .clock-col {
   text-align: center;
-  margin-right: 40px;
-  margin-left: 40px;
-  min-width: 90px;
-  position: relative;
+  min-width: 5rem;
 }
-.clock-col:not(:last-child):before, .clock-col:not(:last-child):after {
-  content: "";
-  background-color: rgba(255, 255, 255, 0.3);
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  right: -42px;
-}
-.clock-col:not(:last-child):before {
-  top: 35%;
-}
-.clock-col:not(:last-child):after {
-  top: 50%;
+@media (min-width: 48rem) {
+  .clock-col {
+    margin: 0 1.8rem;
+  }
 }
 .clock-timer:before {
   color: #fff;
@@ -154,22 +175,12 @@ body {
   font-size: 0.7rem;
   margin-top: 10px;
 }
+@media (min-width: 48rem) {
+  .clock-label {
+    font-size: 1rem;
+  }
+}
 
-.slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.slider-column {
-  text-align: center;
-  padding: 1rem;
-  color: white;
-}
 .slider-title__name {
-  font-size: 1.5rem;
-  color: white;
-  opacity: 85%;
-  font-family: "Poppins", cursive;
-  margin-bottom: 1rem;
+  font-size: 1rem;
 }/*# sourceMappingURL=weather.css.map */
