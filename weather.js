@@ -1,3 +1,5 @@
+//array where location data can be stored in object form
+let placeArray = [];
 // function that accepts an address and console longs the coordinates
 function geocode(address) {
   axios
@@ -8,22 +10,23 @@ function geocode(address) {
       },
     })
     .then(function (response) {
+      let name = response.data.results[0].formatted_address;
       let latitude = response.data.results[0].geometry.location.lat;
       let longitude = response.data.results[0].geometry.location.lng;
-      console.log(latitude + " " + longitude);
+      placeArray.push({ name: name, lat: latitude, lng: longitude });
+      console.log(name + " " + latitude + " " + longitude);
+      document
+        .getElementById("map")
+        .setAttribute(
+          "src",
+          `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=300x200&key=AIzaSyBkK9EaTURhnywpa1o9bj1MPzIIGbZ9d_s`
+        );
     })
     .catch(function (error) {
       console.log(error);
     });
 }
-document.getElementById("address-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  let givenAddress = event.target.addressInput.value;
-  geocode(givenAddress);
-  event.target.addressInput.value = "";
-});
 
-//Autocomplete function for the input field, checks only for real geographical locations
 let autocomplete;
 function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(
@@ -44,28 +47,7 @@ function onPlaceChanged() {
     document.getElementById("pac-input").placeholder = "enter a place";
   } else {
     //display details about a valid place
+    geocode(place.name);
+    document.getElementById("pac-input").value = "";
   }
 }
-
-//map code starts here
-
-//Initialize and add the map
-// function initMap() {
-//   // The location of Uluru
-//   const uluru = { lat: -35.344, lng: -70.036 };
-//   // The map, centered at Uluru
-//   const map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 8,
-//     center: uluru,
-//   });
-//   // The marker, positioned at Uluru
-//   const marker = new google.maps.Marker({
-//     position: uluru,
-//     map: map,
-//   });
-// }
-//this seems to be enough to generate the map and it wraps the input all by itself somehow TODO: figure out how that works
-const map = new google.maps.Map(document.getElementById("map"), {
-  zoom: 4,
-  center: { lat: 35.344, lng: -70.036 },
-});
