@@ -1,0 +1,52 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../img/pexels-min-an-1403550.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.header__container {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.header__title {
+  font-size: 2rem;
+  color: #fff;
+  opacity: 70%;
+  font-family: "Lobster", cursive;
+}
+.header__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.map__container {
+  display: flex;
+  padding: 5rem 3rem 0.25rem;
+  justify-content: center;
+}
+
+#map {
+  margin: auto;
+  height: 20rem;
+  width: 25rem;
+}/*# sourceMappingURL=weather.css.map */
